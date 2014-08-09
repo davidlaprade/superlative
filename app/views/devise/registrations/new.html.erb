@@ -12,8 +12,12 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
+  <p></p>
+
   <div><%= f.label :track %><br /> 
   <%= f.select :track, [['Product and Design','Product and Design'],['Sales','Sales'],['Technical Marketing','Technical Marketing'],['Web Development','Web Development'],] %>
+
+  <p></p>
 
   <div><%= f.label :photo %><br />
   <%= f.file_field :photo, :class => 'file_field' %>
