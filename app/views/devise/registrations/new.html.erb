@@ -12,6 +12,9 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
+  <div><%= f.label :track %><br /> 
+  <%= f.select :track, [['Product and Design','Product and Design'],['Sales','Sales'],['Technical Marketing','Technical Marketing'],['Web Development','Web Development'],] %>
+
   <div><%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 
