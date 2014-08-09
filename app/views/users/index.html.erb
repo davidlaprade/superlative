@@ -1,1 +1,29 @@
-<h2>This is where you'll see the superlatives!</h2>
+<%- model_class = User -%>
+<div class="page-header">
+  <h1>Superlatives</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= "Name" %></th>
+      <th><%= "Track" %></th>
+      <th><%= "Top-Rated Superlative" %></th>
+      <th><%= "Votes" %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= image_tag user.photo_url(:thumb).to_s %></td>
+        <td><%= "#{user.first_name} #{user.last_name}" %></td>
+        <td><%= user.track %></td>
+        <td><%= "add user top-rated superlative here" %></td>
+        <td><%= "add votes here" %></td>
+        <td><%= link_to "Vote!", root_path, :class => 'btn btn-success' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
