@@ -15,11 +15,18 @@
   <div><%= f.label :track %><br /> 
   <%= f.select :track, [['Product and Design','Product and Design'],['Sales','Sales'],['Technical Marketing','Technical Marketing'],['Web Development','Web Development'],] %>
 
+  <div><%= f.label :photo %><br />
+  <%= f.file_field :photo, :class => 'file_field' %>
+
+  <p></p>
+
   <div><%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 
   <div><%= f.label "Password (confirm)" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+  <p></p>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
