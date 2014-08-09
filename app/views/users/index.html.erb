@@ -9,6 +9,7 @@
       <th><%= "Name" %></th>
       <th><%= "Track" %></th>
       <th><%= "Top-Rated Superlative" %></th>
+      <th><%= "Votes" %></th>
       <th></th>
     </tr>
   </thead>
@@ -19,7 +20,8 @@
         <td><%= "#{user.first_name} #{user.last_name}" %></td>
         <td><%= user.track %></td>
         <td><%= "add user top-rated superlative here" %></td>
-        <td><%= link_to "Vote!", root_path, :class => 'btn btn-primary' %></td>
+        <td><%= "add votes here" %></td>
+        <td><%= link_to "Vote!", root_path, :class => 'btn btn-success' %></td>
       </tr>
     <% end %>
   </tbody>
