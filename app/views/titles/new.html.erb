@@ -1,8 +1,9 @@
 <h2><%= "Suggest New Superlative for #{@user.first_name}" %></h2>
 
-<%= text_area_tag(:content, "Most likely to ...", size: "35x6") %>
+<%= form_tag(user_titles_path(@user.id), method: "POST") do %>
+  <%= text_area_tag(:content, "Most likely to...") %>
+  <p></p>
+  <%= submit_tag("Suggest!") %>
+<% end %>
 
-<div class="form-actions">
-  <%= link_to t('Suggest!'), user_titles_path(@user.id), :class => 'btn btn-primary', :method => 'POST' %>
-</div>
 
