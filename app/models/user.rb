@@ -13,4 +13,9 @@ class User < ActiveRecord::Base
   validates :photo, presence: true
   validates :track, presence: true
 
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_superlatives, through: :favorites, source: :title
+  has_many :titles, dependent: :destroy
+
+
 end
