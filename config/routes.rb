@@ -8,7 +8,14 @@ Rails.application.routes.draw do
 
   # get 'users/:id', :to => 'users#show', :as => :user, :via => :get
 
-  resource :users, :titles, :favorites
+  resources :users, only: [:show] do
+    resources :superlatives do
+      member do
+        post 'favorite'
+        post 'unfavorite'
+      end
+    end
+  end
 
 
   # Example of regular route:
