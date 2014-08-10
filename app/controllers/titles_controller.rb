@@ -1,7 +1,8 @@
 class TitlesController < ApplicationController
 
 	def new
-		@title = User.find_by_id(params[:user_id]).titles.new
+		@user = User.find_by_id(params[:user_id])
+		@title = @user.titles.new
 	end
 
 	private
