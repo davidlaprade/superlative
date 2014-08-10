@@ -1,1 +1,36 @@
-  <h1><%= "You are at #{@user.first_name}'s show page!" %></h1>  
+<%- model_class = User -%>
+
+
+<%= image_tag @user.photo_url(:masthead).to_s %>
+
+<div class="page-header">
+  <h2><%= "#{@user.first_name}'s Superlatives" %></h2>
+</div>
+
+
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= "Superlative" %></th>
+      <th><%= "Votes" %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.titles.each do |title| %>
+      <tr>
+        <td><%= title.content %></td>
+        <td><%= title.votes.count %></td>
+        <td><%= link_to "Favorite!", user_path(user.id), :class => 'btn btn--mini-success', :method => 'POST' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<div class="form-actions">
+  <%= link_to t('Suggest New Superlative'), root_path, :class => 'btn btn-primary' %>
+</div>
