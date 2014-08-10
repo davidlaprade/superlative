@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'users#index'
 
-  match 'users/:id', :to => 'users#show', :as => :user, :via => :get
+  get 'users/:id', :to => 'users#show', :as => :user, :via => :get
+
+  # resource :users, only: [:show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
