@@ -21,7 +21,7 @@
         <td><%= user.track %></td>
         <td><%= "add user top-rated superlative here" %></td>
         <td><%= "add votes here" %></td>
-        <td><%= link_to "Vote!", root_path, :class => 'btn btn-success' %></td>
+        <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success' %></td>
       </tr>
     <% end %>
   </tbody>
