@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # get 'users/:id', :to => 'users#show', :as => :user, :via => :get
 
   resources :users, only: [:show] do
-    resources :superlatives do
+    resources :titles do
       member do
         post 'favorite'
         post 'unfavorite'

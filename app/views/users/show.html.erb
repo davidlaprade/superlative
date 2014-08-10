@@ -8,9 +8,6 @@
 </div>
 
 
-
-
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -30,7 +27,10 @@
   </tbody>
 </table>
 
-
-<div class="form-actions">
-  <%= link_to t('Suggest New Superlative'), root_path, :class => 'btn btn-primary' %>
-</div>
+<% if !(current_user == @user) %>
+	<div class="form-actions">
+	  <%= link_to t('Suggest New Superlative'), new_user_title_path(@user.id), :class => 'btn btn-primary' %>
+	</div>
+<% else %>
+<p> (You can't suggest superlatives for yourself) </p>
+<% end %>
