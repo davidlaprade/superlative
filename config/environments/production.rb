@@ -5,7 +5,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   # for Devise
-  config.action_mailer.default_url_options = { host: '[URL of Heroku app]’' }
+  config.action_mailer.default_url_options = { host: 'http://fierce-shelf-2575.herokuapp.com' }
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
