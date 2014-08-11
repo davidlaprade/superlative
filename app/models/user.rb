@@ -24,29 +24,18 @@ validates_inclusion_of :role, :in => ROLES,
   has_many :favorite_superlatives, through: :favorites, source: :title
   has_many :titles, dependent: :destroy
 
-  
-  # call on user object, returns array [n,m] where n is the top-voted superlative for the user, 
-  # and m is the number of votes that superlative has
-  def top_rated_superlative
-    votes_to_beat = 0
-    top_title = ""
-    self.titles.each do |title|
-      if title.votes.count > votes_to_beat
-        votes_to_beat = title.votes.count
-        top_title = title.content
-      end
-    end
-    return [top_title, votes_to_beat]
-  end
 
-# call on user object, returns array of arrays [n,m] where m is the content of one of the user's superlatives
-# and n is the corresponding number of votes/favorites that superlative has for that user
+
+# call on user object, returns array of arrays [n,m,o] where m is the content of one of the user's superlatives
+# n is the corresponding number of votes/favorites that superlative has for that user
+# o is the title id
   def ranked_superlatives
-    store_array = []
+    result_array = []
     self.titles.each do |title|
-      store_array << [title.votes.count, title.content]
+      result_array << [title.votes.count, title.content, title.id]
     end
-    result_array = result_array.sort_by{0}
+    # for how sort works http://stackoverflow.com/questions/2637419/how-does-arraysort-work-when-a-block-is-passed
+    result_array = result_array.sort { |x, y| y[0] <=> x[0] }
     return result_array
   end
 

@@ -16,20 +16,20 @@
       </tr>
     </thead>
     <tbody>
-      <% @user.ranked_superlatives.sort.each do |array| %>
+      <% @user.ranked_superlatives.each do |title| %>
         <tr>
-          <td><%= title.content %></td>
-          <td><%= title.votes.count %></td>
+          <td><%= title[1] %></td>
+          <td><%= title[0] %></td>
 
           <!-- if the current user hasn't favorited any of @user's superlatives -->
           <% if !(current_user.favorite_superlatives.where(user_id: @user.id).present?) %>
-            <td><%= link_to "Favorite!", favorite_user_title_path(@user.id, title.id), 
+            <td><%= link_to "Favorite!", favorite_user_title_path(@user.id, title[2]), 
                               :class => 'btn btn-success', :method => 'POST' %></td>
           <% else %>
           <!-- if the current user HAS favorited one of @user's superlatives -->
               <!-- and the superlative the current user favorited was this one -->
-              <% if (current_user.favorite_superlatives.where(user_id: @user.id).find_by_id(title.id).present?) %>
-                <td><%= link_to "Unfavorite!", unfavorite_user_title_path(@user.id, title.id), 
+              <% if (current_user.favorite_superlatives.where(user_id: @user.id).find_by_id(title[2]).present?) %>
+                <td><%= link_to "Unfavorite!", unfavorite_user_title_path(@user.id, title[2]), 
                                   :class => 'btn btn-warning', :method => 'POST' %></td>
               <!-- and the superlative the current user favorited was NOT this one -->
               <% else %>
@@ -37,7 +37,7 @@
               <% end %>
           <% end %>
           <% if current_user.role == "admin" %>
-             <td><%= link_to "Admin Delete", user_title_path(@user.id, title.id), 
+             <td><%= link_to "Admin Delete", user_title_path(@user.id, title[2]), 
                                   :class => 'btn btn-danger', :method => 'DELETE' %></td>
           <% end %>
         </tr>

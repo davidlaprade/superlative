@@ -19,8 +19,8 @@
         <td><%= image_tag user.photo_url(:thumb).to_s %></td>
         <td><%= "#{user.first_name} #{user.last_name}" %></td>
         <td><%= user.track %></td>
-        <td><%= user.ranked_superlatives.sort.last[1] %></td>
-        <td><%= user.ranked_superlatives.sort.last[0] %></td>
+        <td><%= user.ranked_superlatives[0][1] %></td>
+        <td><%= user.ranked_superlatives[0][0] %></td>
         <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success' %></td>
       </tr>
     <% end %>
