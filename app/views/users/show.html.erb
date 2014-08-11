@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @user.titles.each do |title| %>
+      <% @user.ranked_superlatives.sort.each do |array| %>
         <tr>
           <td><%= title.content %></td>
           <td><%= title.votes.count %></td>

@@ -39,4 +39,15 @@ validates_inclusion_of :role, :in => ROLES,
     return [top_title, votes_to_beat]
   end
 
+# call on user object, returns array of arrays [n,m] where m is the content of one of the user's superlatives
+# and n is the corresponding number of votes/favorites that superlative has for that user
+  def ranked_superlatives
+    store_array = []
+    self.titles.each do |title|
+      store_array << [title.votes.count, title.content]
+    end
+    result_array = result_array.sort_by{0}
+    return result_array
+  end
+
 end
