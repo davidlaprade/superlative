@@ -18,7 +18,7 @@ class FavoritesController < ApplicationController
 		@favorites = Favorite.where(user_id: current_user.id).where(title_id: @title.id)
 		@favorites.destroy_all
 
-		if @favorite.destroy_all
+		if @favorites.destroy_all
 			redirect_to user_path(params[:user_id])
 		else
 			redirect_to root_path

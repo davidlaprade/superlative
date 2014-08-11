@@ -12,7 +12,7 @@
       <tr>
         <th><%= "Superlative" %></th>
         <th><%= "Votes" %></th>
-        <th></th>
+        <th><%= "Actions" %></th>
       </tr>
     </thead>
     <tbody>
@@ -20,8 +20,9 @@
         <tr>
           <td><%= title.content %></td>
           <td><%= title.votes.count %></td>
+
           <!-- if the current user hasn't favorited any of @user's superlatives -->
-          <% if (current_user.favorite_superlatives.where(user_id: @user_id).present?) %>
+          <% if !(current_user.favorite_superlatives.where(user_id: @user.id).present?) %>
             <td><%= link_to "Favorite!", favorite_user_title_path(@user.id, title.id), 
                               :class => 'btn btn-success', :method => 'POST' %></td>
           <% else %>
@@ -30,6 +31,9 @@
               <% if (current_user.favorite_superlatives.where(user_id: @user.id).find_by_id(title.id).present?) %>
                 <td><%= link_to "Unfavorite!", unfavorite_user_title_path(@user.id, title.id), 
                                   :class => 'btn btn-warning', :method => 'POST' %></td>
+              <!-- and the superlative the current user favorited was NOT this one -->
+              <% else %>
+                <td></td>
               <% end %>
           <% end %>
         </tr>
