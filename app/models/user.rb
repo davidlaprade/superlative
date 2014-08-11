@@ -4,6 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
+# See http://stackoverflow.com/questions/2650897/in-rails-how-should-i-implement-a-status-field-for-a-tasks-app-integer-or-enu#2651261
+ROLES = ['patron', 'admin']
+validates_inclusion_of :role, :in => ROLES,
+          :message => "{{value}} must be in #{ROLES.join ','}"
+
+
   mount_uploader :photo, PhotoUploader
 
   validates :first_name, presence: true

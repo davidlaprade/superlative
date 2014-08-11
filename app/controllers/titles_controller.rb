@@ -17,6 +17,17 @@ class TitlesController < ApplicationController
 		end
 	end
 
+	def destroy
+		@user = User.find_by_id(params[:user_id])
+		@title = Title.find_by_id(params[:id])
+		@title.delete
+
+		if @title.delete
+			redirect_to user_path(@user.id)
+		else
+			redirect_to root_path
+		end
+	end
 
 	private
 	def title_params
