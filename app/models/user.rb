@@ -11,14 +11,7 @@ validates_inclusion_of :role, :in => ROLES,
           :message => "{{value}} must be in #{ROLES.join ','}"
 
 
-# http://guides.rubyonrails.org/active_record_validations.html
-# class AccesscodeValidator < ActiveModel::AccesscodeValidator
-#   def validate(user)
-#     if user.access_code != "siboston"
-#       record.errors[:base] << "incorrect access code"
-#     end
-#   end
-# end
+
 
   mount_uploader :photo, PhotoUploader
 
@@ -28,7 +21,7 @@ validates_inclusion_of :role, :in => ROLES,
   validates_uniqueness_of :email, message: 'must be unique'
   validates :photo, presence: true
   validates :track, presence: true
-  # validates_with AccesscodeValidator
+  validates_with AccesscodeValidator
   
 
 
@@ -60,3 +53,5 @@ validates_inclusion_of :role, :in => ROLES,
   end
 
 end
+
+
