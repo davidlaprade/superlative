@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'users#index'
 
-  # get 'users/:id', :to => 'users#show', :as => :user, :via => :get
-
+  # Don't want users to have access to more RESTFUL actions through URL than the show
   resources :users, only: [:show] do
+    # nest the titles routes in users routes; want to have user_id (different from current_user.id) in params
     resources :titles do
+      # next the favorites routes in titles routes; again, to access title_id from the params
       member do
-        post 'favorite'
-        post 'unfavorite'
+        post 'favorite', :to => 'favorites#favorite'
+        post 'unfavorite', :to => 'favorites#unfavorite'
       end
     end
   end

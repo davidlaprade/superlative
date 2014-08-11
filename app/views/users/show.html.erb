@@ -20,7 +20,8 @@
         <tr>
           <td><%= title.content %></td>
           <td><%= title.votes.count %></td>
-          <td><%= link_to "Favorite!", user_path(@user.id), :class => 'btn btn-success', :method => 'POST' %></td>
+          <td><%= link_to "Favorite!", favorite_user_title_path(@user.id, title.id), 
+                              :class => 'btn btn-success', :method => 'POST' %></td>
         </tr>
       <% end %>
     </tbody>
