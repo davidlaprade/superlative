@@ -1,36 +1,39 @@
 <%- model_class = User -%>
 
-
 <%= image_tag @user.photo_url(:masthead).to_s %>
 
-<div class="page-header">
-  <h2><%= "#{@user.first_name}'s Superlatives" %></h2>
-</div>
+<h2><%= "#{@user.first_name}'s Superlatives" %></h2>
 
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= "Superlative" %></th>
-      <th><%= "Votes" %></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user.titles.each do |title| %>
-      <tr>
-        <td><%= title.content %></td>
-        <td><%= title.votes.count %></td>
-        <td><%= link_to "Favorite!", user_path(@user.id), :class => 'btn btn-success', :method => 'POST' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<% if !(current_user == @user) %>
-	<div class="form-actions">
-	  <%= link_to t('Suggest New Superlative'), new_user_title_path(@user.id), :class => 'btn btn-primary' %>
-	</div>
+<% if @user.titles.present? == false %>
+  <p> No superlatives have been suggested yet! </p>
 <% else %>
-<p> <h5>Hint: You can't suggest superlatives for yourself</h5> </p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= "Superlative" %></th>
+        <th><%= "Votes" %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.titles.each do |title| %>
+        <tr>
+          <td><%= title.content %></td>
+          <td><%= title.votes.count %></td>
+          <td><%= link_to "Favorite!", user_path(@user.id), :class => 'btn btn-success', :method => 'POST' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
+
+<% if current_user == @user %>
+<h5>(Hint: You can't suggest superlatives for yourself)</h5>
+<% end %>
+
+<div class="form-actions">
+<% if !(current_user == @user) %>
+	  <%= link_to t('Suggest New Superlative'), new_user_title_path(@user.id), :class => 'btn btn-primary' %>
+<% end %>
+<%= link_to t('Home'), root_path, :class => 'btn' %>
+</div>

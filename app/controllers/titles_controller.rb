@@ -11,7 +11,7 @@ class TitlesController < ApplicationController
 		@title.created_by = current_user.id
 
 		if @title.save
-			redirect_to root_path
+			redirect_to user_path(@user.id)
 		else
 			render 'new'
 		end

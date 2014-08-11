@@ -21,7 +21,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :masthead do
-        process :resize_to_limit => [200, 200]
+        process :resize_to_limit => [300, 300]
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
