@@ -1,6 +1,6 @@
 class AddAccessCodeToUser < ActiveRecord::Migration
   def change
-  	  add_column :users, :access_code, :string, default: 'siboston'
+  	  add_column :users, :access_code, :string, default: nil
   	  
   	  # See http://guides.rubyonrails.org/migrations.html to explain why this is here
   	  User.reset_column_information
