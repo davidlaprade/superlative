@@ -11,6 +11,15 @@ validates_inclusion_of :role, :in => ROLES,
           :message => "{{value}} must be in #{ROLES.join ','}"
 
 
+# http://guides.rubyonrails.org/active_record_validations.html
+# class AccesscodeValidator < ActiveModel::AccesscodeValidator
+#   def validate(user)
+#     if user.access_code != "siboston"
+#       record.errors[:base] << "incorrect access code"
+#     end
+#   end
+# end
+
   mount_uploader :photo, PhotoUploader
 
   validates :first_name, presence: true
@@ -19,6 +28,17 @@ validates_inclusion_of :role, :in => ROLES,
   validates_uniqueness_of :email, message: 'must be unique'
   validates :photo, presence: true
   validates :track, presence: true
+  # validates_with AccesscodeValidator
+  
+
+
+
+  # validate :check_access_code
+
+  # # see http://stackoverflow.com/questions/2273122/how-do-i-validate-that-two-values-do-not-equal-each-other-in-a-rails-model
+  # def check_access_code
+  #   errors.add(:access_code, "incorrect access code") if access_code != "siboston"
+  # end
 
   has_many :favorites, dependent: :destroy
   has_many :favorite_superlatives, through: :favorites, source: :title
