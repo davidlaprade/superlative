@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
 		devise_parameter_sanitizer.for(:sign_up) << :photo
 		devise_parameter_sanitizer.for(:sign_up) << :track
 		devise_parameter_sanitizer.for(:sign_up) << :access_code
+		devise_parameter_sanitizer.for(:account_update) << :first_name
+		devise_parameter_sanitizer.for(:account_update) << :last_name
+		devise_parameter_sanitizer.for(:account_update) << :photo
+		devise_parameter_sanitizer.for(:account_update) << :track
+		devise_parameter_sanitizer.for(:account_update) << :access_code
 	end
 
 end
