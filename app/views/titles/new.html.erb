@@ -1,6 +1,6 @@
 <h2><%= "Suggest New Superlative for #{@user.first_name}" %></h2>
 
-<%= form_for user_titles_path(@user.id), :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for [@user,@title] do |f| %>
     <%= f.text_area :content, :value => "Most likely to...", :class => 'text_field' %>
     <p></p>
     <%= f.submit("Suggest!", :class => 'btn btn-primary') %>

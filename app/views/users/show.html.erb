@@ -21,7 +21,7 @@
       <tr>
         <td><%= title.content %></td>
         <td><%= title.votes.count %></td>
-        <td><%= link_to "Favorite!", user_path(user.id), :class => 'btn btn--mini-success', :method => 'POST' %></td>
+        <td><%= link_to "Favorite!", user_path(@user.id), :class => 'btn btn-success', :method => 'POST' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,5 +32,5 @@
 	  <%= link_to t('Suggest New Superlative'), new_user_title_path(@user.id), :class => 'btn btn-primary' %>
 	</div>
 <% else %>
-<p> (You can't suggest superlatives for yourself) </p>
+<p> <h5>Hint: You can't suggest superlatives for yourself</h5> </p>
 <% end %>
