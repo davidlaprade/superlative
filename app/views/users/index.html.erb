@@ -21,7 +21,14 @@
           <td><%= "#{user.first_name} #{user.last_name}" %></td>
           <td><%= user.track %></td>
           <% if user.ranked_superlatives.present? %>
-          <td><%= user.ranked_superlatives[0][1] %></td>
+              <td>
+              <% if user.top_superlatives.length > 1 %>
+                <%= "#{user.top_superlatives.length}-way Tie!" %><p></p>
+              <% end %>
+              <% user.top_superlatives.each do |content| %>
+                <%= "#{content}" %><p></p>
+              <% end %>
+              </td>
           <% else %>
           <td><%= "No superlatives suggested yet!" %></td>
           <% end %>

@@ -40,9 +40,8 @@ validates_inclusion_of :role, :in => ROLES,
 
 
 
-# call on user object, returns array of arrays [n,m,o] where m is the content of one of the user's superlatives
-# n is the corresponding number of votes/favorites that superlative has for that user
-# o is the title id
+# call on user object, returns ordered array of arrays [n,m,o] where m is the content of one of the user's superlatives/titles
+# n is the corresponding number of votes/favorites that superlative has for that user, and o is the superlative/title id
   def ranked_superlatives
     result_array = []
     self.titles.each do |title|
@@ -51,6 +50,21 @@ validates_inclusion_of :role, :in => ROLES,
     # for how sort works http://stackoverflow.com/questions/2637419/how-does-arraysort-work-when-a-block-is-passed
     result_array = result_array.sort { |x, y| y[0] <=> x[0] }
     return result_array
+  end
+
+  # call on user object, returns an array of superlative contents that are tied for the most votes
+  def top_superlatives
+    if self.ranked_superlatives != nil
+      ranked_superlatives = self.ranked_superlatives
+      max_votes = ranked_superlatives[0][0]
+      top_superlatives = []
+      ranked_superlatives.each do |array|
+        if array[0] == max_votes
+          top_superlatives << array[1]
+        end
+      end
+      return top_superlatives
+    end
   end
 
 end
