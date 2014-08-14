@@ -15,22 +15,24 @@
   </thead>
   <tbody>
     <% @users.order(:last_name).each do |user| %>
-      <tr>
-        <td><%= image_tag user.photo_url(:thumb).to_s %></td>
-        <td><%= "#{user.first_name} #{user.last_name}" %></td>
-        <td><%= user.track %></td>
-        <% if user.ranked_superlatives.present? %>
-        <td><%= user.ranked_superlatives[0][1] %></td>
-        <% else %>
-        <td><%= "No superlatives suggested yet!" %></td>
-        <% end %>
-        <% if user.ranked_superlatives.present? %>
-        <td><%= user.ranked_superlatives[0][0] %></td>
-        <% else %>
-        <td><%= "N/A" %></td>
-        <% end %>
-        <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success' %></td>
-      </tr>
+      <% if user.role != "guest" %>
+        <tr>
+          <td><%= image_tag user.photo_url(:thumb).to_s %></td>
+          <td><%= "#{user.first_name} #{user.last_name}" %></td>
+          <td><%= user.track %></td>
+          <% if user.ranked_superlatives.present? %>
+          <td><%= user.ranked_superlatives[0][1] %></td>
+          <% else %>
+          <td><%= "No superlatives suggested yet!" %></td>
+          <% end %>
+          <% if user.ranked_superlatives.present? %>
+          <td><%= user.ranked_superlatives[0][0] %></td>
+          <% else %>
+          <td><%= "N/A" %></td>
+          <% end %>
+          <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success' %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
