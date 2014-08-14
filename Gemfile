@@ -35,7 +35,7 @@ group :development, :test do
 end
 group :test do
 	gem 'faker'
-	gem 'capybara'
+	# gem 'capybara' removed because it conflicts with fog gem
 	gem 'guard-rspec'
 	gem 'launchy'
 	gem 'database_cleaner'
@@ -50,7 +50,7 @@ gem 'pry'
 
 gem 'carrierwave'
 gem 'rmagick'
-gem 'fog', '~> 1.0.0'
+gem 'fog', '> 1.0.0', :groups => [:production]
 
 gem 'devise'
 
