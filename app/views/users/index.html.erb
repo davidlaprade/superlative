@@ -37,11 +37,7 @@
           <% else %>
           <td><%= "N/A" %></td>
           <% end %>
-          <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success' %>
-          <% if user_signed_in? && current_user.role == "admin" %>
-            <td><%= link_to "Delete", edit_user_registration_path(user.id), :class => 'btn btn-danger', :method => 'DELETE' %>
-          <% end %>
-          </td>
+          <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success' %></td>
         </tr>
       <% end %>
     <% end %>
