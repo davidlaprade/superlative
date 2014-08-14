@@ -14,8 +14,8 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.order(:last_name).each do |user| %>
-      <% if user.role != "guest" %>
+    <% if current_user.present? && current_user.role == "admin" %>
+        <% @users.order(:last_name).each do |user| %>
         <tr>
           <td><%= image_tag user.photo_url(:thumb).to_s %></td>
           <td><%= "#{user.first_name} #{user.last_name}" %></td>
@@ -39,6 +39,34 @@
           <% end %>
           <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success' %></td>
         </tr>
+        <% end %>
+    <% else %>
+      <% @users.order(:last_name).each do |user| %>
+        <% if user.role != "guest" %>
+          <tr>
+            <td><%= image_tag user.photo_url(:thumb).to_s %></td>
+            <td><%= "#{user.first_name} #{user.last_name}" %></td>
+            <td><%= user.track %></td>
+            <% if user.ranked_superlatives.present? %>
+                <td>
+                <% if user.top_superlatives.length > 1 %>
+                  <%= "#{user.top_superlatives.length}-way Tie!" %><p></p>
+                <% end %>
+                <% user.top_superlatives.each do |content| %>
+                  <%= "#{content}" %><p></p>
+                <% end %>
+                </td>
+            <% else %>
+            <td><%= "No superlatives suggested yet!" %></td>
+            <% end %>
+            <% if user.ranked_superlatives.present? %>
+            <td><%= user.ranked_superlatives[0][0] %></td>
+            <% else %>
+            <td><%= "N/A" %></td>
+            <% end %>
+            <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success' %></td>
+          </tr>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>
