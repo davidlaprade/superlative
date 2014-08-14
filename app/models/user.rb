@@ -38,8 +38,6 @@ validates_inclusion_of :role, :in => ROLES,
   has_many :favorite_superlatives, through: :favorites, source: :title
   has_many :titles, dependent: :destroy
 
-
-
 # call on user object, returns ordered array of arrays [n,m,o] where m is the content of one of the user's superlatives/titles
 # n is the corresponding number of votes/favorites that superlative has for that user, and o is the superlative/title id
   def ranked_superlatives
