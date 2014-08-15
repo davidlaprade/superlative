@@ -14,7 +14,9 @@ before_save :ensure_no_duplicate_favorites
 		end
 
 		if already_favorited.include?(Title.find(self.title_id).user_title_was_suggested_for)
-			render 'home'
+			return false
+		else
+			return true
 		end
 	end
 

@@ -19,7 +19,7 @@ class FavoritesController < ApplicationController
 			if @favorite.save
 				redirect_to user_path(params[:user_id])
 			else
-				redirect_to root_path
+				redirect_to user_path(params[:user_id])
 			end
 		end
 	end
