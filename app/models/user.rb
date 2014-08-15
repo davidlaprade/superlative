@@ -19,7 +19,7 @@ validates_inclusion_of :role, :in => ROLES,
   validates :last_name, presence: true
   validates :email, presence: true
   validates_uniqueness_of :email, message: 'must be unique'
-  # validates :photo, presence: true
+  validates :photo, presence: true
   validates :track, presence: true
   # see root/app/models/accesscode_validator to see how this works
   validates_with AccesscodeValidator
