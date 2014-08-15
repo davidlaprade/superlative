@@ -1,15 +1,26 @@
 class FavoritesController < ApplicationController
 	def favorite
-		@favorite = Favorite.new
-		@favorite.user_id = current_user.id
-		@favorite.title_id = params[:id]
 
-		@favorite.save
+		# makes sure a user can't favorite a superlative multiple times by clicking quickly
+		already_favorited = []
+		current_user.favorite_superlatives.each do |title|
+			if !(already_favorited.include?(title.id))
+				already_favorited << title.id
+			end
+		end
 
-		if @favorite.save
+		if already_favorited.include?(params[:user_id])
 			redirect_to user_path(params[:user_id])
 		else
-			redirect_to root_path
+			@favorite = current_user.favorites.new
+			@favorite.title_id = params[:id]
+			@favorite.save
+
+			if @favorite.save
+				redirect_to user_path(params[:user_id])
+			else
+				redirect_to root_path
+			end
 		end
 	end
 
