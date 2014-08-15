@@ -12,10 +12,10 @@
       <tr>
         <th><%= "Superlative" %></th>
         <th><%= "Votes" %></th>
-<!--         <% if current_user.role = "admin" %>
-        <th><%= "Suggested by" %></th>
-        <th><%= "Favorited by" %></th>
-        <% end %> -->
+        <% if current_user.role = "admin" %>
+          <th><%= "Suggested by" %></th>
+          <th><%= "Favorited by" %></th>
+        <% end %>
         <th><%= "Actions" %></th>
       </tr>
     </thead>
@@ -24,6 +24,15 @@
         <tr>
           <td><%= title[1] %></td>
           <td><%= title[0] %></td>
+          <% if current_user.role = "admin" %>
+            <th><%= "#{User.find_by_id(Title.find_by_id(title[2]).created_by).first_name} #{User.find_by_id(Title.find_by_id(title[2]).created_by).last_name}" %>
+            </th>
+            <th>
+              <% Title.find_by_id(title[2]).votes.each do |user| %>
+                <%= "#{user.first_name} #{user.last_name}, " %>
+              <% end %>
+            </th>
+          <% end %>
 
           <!-- if the current user hasn't favorited any of @user's superlatives -->
           <% if !(current_user.favorite_superlatives.where(user_id: @user.id).present?) %>
