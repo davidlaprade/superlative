@@ -2,6 +2,7 @@
 
 <%= image_tag @user.photo_url(:masthead).to_s %>
 
+
 <h2><%= "#{@user.first_name}'s Superlatives" %></h2>
 
 <% if @user.titles.present? == false %>
@@ -12,10 +13,12 @@
       <tr>
         <th><%= "Superlative" %></th>
         <th><%= "Votes" %></th>
-        <% if current_user.role = "admin" %>
+
+        <% if current_user.role == "admin" %>
           <th><%= "Suggested by" %></th>
           <th><%= "Favorited by" %></th>
         <% end %>
+
         <th><%= "Actions" %></th>
       </tr>
     </thead>
@@ -26,14 +29,14 @@
           <td><%= title[0] %></td>
 
           
-          <% if current_user.role = "admin" %>
-            <th><%= "#{User.find_by_id(Title.find_by_id(title[2]).created_by).first_name} #{User.find_by_id(Title.find_by_id(title[2]).created_by).last_name}" %>
-            </th>
-            <th>
+          <% if current_user.role == "admin" %>
+            <td><%= "#{User.find_by_id(Title.find_by_id(title[2]).created_by).first_name} #{User.find_by_id(Title.find_by_id(title[2]).created_by).last_name}" %>
+            </td>
+            <td>
               <% Title.find_by_id(title[2]).votes.each do |user| %>
                 <%= "#{user.first_name} #{user.last_name}, " %>
               <% end %>
-            </th>
+            </td>
           <% end %>
 
           <!-- if the current user hasn't favorited any of @user's superlatives -->

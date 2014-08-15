@@ -46,7 +46,7 @@ gem 'less-rails-bootstrap'
 gem 'pg'
 gem 'mysql2'
 gem 'better_errors'
-gem 'pry'
+gem 'pry-rails'
 
 gem 'carrierwave'
 gem 'rmagick'
