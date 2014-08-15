@@ -24,6 +24,8 @@
         <tr>
           <td><%= title[1] %></td>
           <td><%= title[0] %></td>
+
+          
           <% if current_user.role = "admin" %>
             <th><%= "#{User.find_by_id(Title.find_by_id(title[2]).created_by).first_name} #{User.find_by_id(Title.find_by_id(title[2]).created_by).last_name}" %>
             </th>
