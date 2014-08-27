@@ -1,7 +1,6 @@
 <%- model_class = User -%>
 
-<%= image_tag @user.photo_url(:masthead).to_s %>
-
+<img src=<%= @user.photo_url(:masthead).to_s %> class="img-circle">
 
 <h2><%= "#{@user.first_name}'s Superlatives" %></h2>
 
@@ -66,12 +65,12 @@
 <% end %>
 
 <% if current_user == @user %>
-<h5><i>(Hint: You can't suggest superlatives for yourself, though you can vote for one of your superlatives)<i></h5>
+<h5><i>(Hint: You can't suggest superlatives for yourself, though you can vote for one of your superlatives)</i></h5>
 <% end %>
 
 <div class="form-actions">
 <% if !(current_user == @user) %>
 	  <%= link_to t('Suggest New Superlative'), new_user_title_path(@user.id), :class => 'btn btn-primary' %>
 <% end %>
-  <a class="btn" href=<%= root_path %> ><i class="icon-home"></i></a>
+  <a class="btn" href=<%= root_path %> ><i class="icon-home"></i> Home</a>
 </div>
