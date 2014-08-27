@@ -1,7 +1,7 @@
 <h2><%= "Suggest New Superlative for #{@user.first_name}" %></h2>
 
 <%= form_for [@user,@title] do |f| %>
-    <%= f.text_area :content, :value => "For example: Most likely to...", :class => 'text_field' %>
+    <%= f.text_area :content, :placeholder => "Most likely to...", :class => 'text_field' %>
     <p></p>
     <%= f.submit("Suggest!", :class => 'btn btn-primary') %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

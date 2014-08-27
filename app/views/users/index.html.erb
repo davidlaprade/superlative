@@ -37,7 +37,7 @@
           <% else %>
           <td><%= "N/A" %></td>
           <% end %>
-          <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success' %></td>
+          <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success btn-large' %></td>
         </tr>
         <% end %>
     <% else %>
@@ -64,7 +64,7 @@
             <% else %>
             <td><%= "N/A" %></td>
             <% end %>
-            <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success' %></td>
+            <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success btn-large' %></td>
           </tr>
         <% end %>
       <% end %>

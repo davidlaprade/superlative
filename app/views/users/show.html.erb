@@ -41,14 +41,15 @@
 
           <!-- if the current user hasn't favorited any of @user's superlatives -->
           <% if !(current_user.favorite_superlatives.where(user_id: @user.id).present?) %>
-            <td><%= link_to "Favorite!", favorite_user_title_path(@user.id, title[2]), 
-                              :class => 'btn btn-success', :method => 'POST' %></td>
+            <td><a class="btn btn-success" data-method="POST" href=<%= favorite_user_title_path(@user.id, title[2]) %> >
+                   <i class="icon-arrow-up icon-white"></i> Favorite</a></td>
           <% else %>
           <!-- if the current user HAS favorited one of @user's superlatives -->
               <!-- and the superlative the current user favorited was this one -->
               <% if (current_user.favorite_superlatives.where(user_id: @user.id).find_by_id(title[2]).present?) %>
-                <td><%= link_to "Unfavorite!", unfavorite_user_title_path(@user.id, title[2]), 
-                                  :class => 'btn btn-warning', :method => 'POST' %></td>
+                <td><a class="btn btn-warning" data-method="POST" href=<%= unfavorite_user_title_path(@user.id, title[2]) %> >
+                   <i class="icon-arrow-down icon-white"></i> Unfavorite</a></td>
+
               <!-- and the superlative the current user favorited was NOT this one -->
               <% else %>
                 <td></td>
@@ -72,5 +73,5 @@
 <% if !(current_user == @user) %>
 	  <%= link_to t('Suggest New Superlative'), new_user_title_path(@user.id), :class => 'btn btn-primary' %>
 <% end %>
-<%= link_to t('Home'), root_path, :class => 'btn' %>
+  <a class="btn" href=<%= root_path %> ><i class="icon-home"></i></a>
 </div>

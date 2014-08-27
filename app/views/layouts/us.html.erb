@@ -46,12 +46,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Superlative</a>
+          <a class="brand">SIB Superlative Rater</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Hello, #{current_user.first_name}!", root_path  %></li>
+              <% if (current_user.present?) %>
+              <li><a></i><%= "Hello, #{current_user.first_name}!" %></a></li>
+              <li><a href=<%= root_path %> ><i class="icon-home"></i> Home</a></li>    
+              <li><a href=<%= edit_user_registration_path(current_user.id) %>><i class="icon-user"></i> Edit Profile</a></li>
               <li><%= link_to "Log Out", destroy_user_session_path, :method => 'DELETE'  %></li>
-              <li><%= link_to "Home", root_path  %></li>
+              <% else %>
+              <li><a href=<%= root_path %> ><i class="icon-home"></i> Home</a></li>    
+              <li><%= link_to "Sign in", new_user_session_path, :method => 'GET'  %></li>
+              <li><%= link_to "Sign up", new_user_registration_path, :method => 'GET'  %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -59,7 +66,7 @@
     </div>
 
 
-        <div class="span9">
+        <div class="span12">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
