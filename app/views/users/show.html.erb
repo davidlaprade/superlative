@@ -1,6 +1,9 @@
 <%- model_class = User -%>
-
-<img src=<%= @user.photo_url(:masthead).to_s %> class="img-circle">
+<div class="row">
+  <div class="span3">
+    <img src=<%= @user.photo_url(:masthead).to_s %> class="img-circle">
+  </div>
+  <div class="span9">
 
 <h2><%= "#{@user.first_name}'s Superlatives" %></h2>
 
@@ -73,4 +76,7 @@
 	  <%= link_to t('Suggest New Superlative'), new_user_title_path(@user.id), :class => 'btn btn-primary' %>
 <% end %>
   <a class="btn" href=<%= root_path %> ><i class="icon-home"></i> Home</a>
+</div>
+
+</div>
 </div>
