@@ -44,7 +44,7 @@
       <% @users.order(:last_name).each do |user| %>
         <% if user.role != "guest" %>
           <tr>
-            <td><%= image_tag user.photo_url(:thumb).to_s %></td>
+          <td><img src=<%= user.photo_url(:thumb).to_s %> class="img-circle"></td>
             <td><%= "#{user.first_name} #{user.last_name}" %></td>
             <td><%= user.track %></td>
             <% if user.ranked_superlatives.present? %>
