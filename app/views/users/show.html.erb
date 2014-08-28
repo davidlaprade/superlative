@@ -73,7 +73,7 @@
     <% if !(current_user == @user) %>
     	  <%= link_to t('Suggest New Superlative'), new_user_title_path(@user.id), :class => 'btn btn-primary' %>
     <% end %>
-      <a class="btn" href=<%= root_path %> ><i class="icon-home"></i> Home</a>
+      <a class="btn" href=<%= users_path %> ><i class="icon-home"></i> Home</a>
     </div>
   </div>
 </div>
