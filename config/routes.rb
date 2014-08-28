@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'welcome#welcome'
 
   # Don't want users to have access to more RESTFUL actions through URL than the show
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :index] do
     # nest the titles routes in users routes; want to have user_id (different from current_user.id) in params
     resources :titles do
       # next the favorites routes in titles routes; again, to access title_id from the params
