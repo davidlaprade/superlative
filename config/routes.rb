@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  root 'welcome#welcome'
 
   # Don't want users to have access to more RESTFUL actions through URL than the show
   resources :users, only: [:show] do

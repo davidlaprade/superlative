@@ -38,43 +38,8 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand">SIB Superlative Rater</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <% if (current_user.present?) %>
-              <li><a></i><%= "Hello, #{current_user.first_name}!" %></a></li>
-              <li><a href=<%= root_path %> ><i class="icon-home"></i> Home</a></li>    
-              <li><a href=<%= edit_user_registration_path(current_user.id) %>><i class="icon-user"></i> Edit Profile</a></li>
-              <li><%= link_to "Log Out", destroy_user_session_path, :method => 'DELETE'  %></li>
-              <% else %>
-              <li><a href=<%= root_path %> ><i class="icon-home"></i> Home</a></li>    
-              <li><%= link_to "Sign in", new_user_session_path, :method => 'GET'  %></li>
-              <li><%= link_to "Sign up", new_user_registration_path, :method => 'GET'  %></li>
-              <% end %>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
 
-
-        <div class="span12">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-      </div><!--/row-->
-
-
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+<script>
+  $.backstretch("<%= asset_path 'SIB.jpg' %>", {fade: 750, duration: 6000});
+</script>
+</body>
