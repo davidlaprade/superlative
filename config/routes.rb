@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#welcome'
 
-  get '/welcome' => "welcome#welcome", as: :root
+# to fix devise routing
+# https://github.com/plataformatec/devise/wiki/How-To:-Redirect-to-a-specific-page-on-successful-sign-in-or-sign-out
+# http://guides.rubyonrails.org/routing.html
+  get :user_root, to: "welcome#welcome"
 
   # Don't want users to have access to more RESTFUL actions through URL than the show
   resources :users, only: [:show, :index] do
