@@ -1,76 +1,16 @@
 <%- model_class = User -%>
-<div class="page-header">
-  <h1>Superlatives Do Not Push to Heroku Without Fixing AWS !!!!</h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th><%= "Name" %></th>
-      <th><%= "Track" %></th>
-      <th><%= "Top-Rated Superlative" %></th>
-      <th><%= "Votes" %></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if current_user.present? && current_user.role == "admin" %>
-        <% @users.order(:last_name).each do |user| %>
-        <tr>
-          <td><img src=<%= user.photo_url(:thumb).to_s %> class="img-circle"></td>
-          <td><%= "#{user.first_name} #{user.last_name}" %></td>
-          <td><%= user.track %></td>
-          <% if user.ranked_superlatives.present? %>
-              <td>
-              <% if user.top_superlatives.length > 1 %>
-                <%= "#{user.top_superlatives.length}-way Tie!" %><p></p>
-              <% end %>
-              <% user.top_superlatives.each do |content| %>
-                <%= "#{content}" %><p></p>
-              <% end %>
-              </td>
-          <% else %>
-          <td><%= "No superlatives suggested yet!" %></td>
-          <% end %>
-          <% if user.ranked_superlatives.present? %>
-          <td><%= user.ranked_superlatives[0][0] %></td>
-          <% else %>
-          <td><%= "N/A" %></td>
-          <% end %>
-          <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success btn-large' %></td>
-        </tr>
-        <% end %>
-    <% else %>
-      <% @users.order(:last_name).each do |user| %>
-        <% if user.role != "guest" %>
-          <tr>
-          <td><img src=<%= user.photo_url(:thumb).to_s %> class="img-circle"></td>
-            <td><%= "#{user.first_name} #{user.last_name}" %></td>
-            <td><%= user.track %></td>
-            <% if user.ranked_superlatives.present? %>
-                <td>
-                <% if user.top_superlatives.length > 1 %>
-                  <%= "#{user.top_superlatives.length}-way Tie!" %><p></p>
-                <% end %>
-                <% user.top_superlatives.each do |content| %>
-                  <%= "#{content}" %><p></p>
-                <% end %>
-                </td>
-            <% else %>
-            <td><%= "No superlatives suggested yet!" %></td>
-            <% end %>
-            <% if user.ranked_superlatives.present? %>
-            <td><%= user.ranked_superlatives[0][0] %></td>
-            <% else %>
-            <td><%= "N/A" %></td>
-            <% end %>
-            <td><%= link_to "Vote!", user_path(user.id), :class => 'btn btn-success btn-large' %></td>
-          </tr>
-        <% end %>
-      <% end %>
+
+
+<div class="row" style="PADDING-TOP: 25px">
+  <div class="row12" style="PADDING-left: 100px; PADDING-right: 100px">
+    <% @users.order(:last_name).each do |user| %>
+        <a href=<%= user_path(user) %> style="PADDING-left: 35px"><img src=<%= user.photo_url(:thumb).to_s %> class="img-circle"></a>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+
+
+
 
 <script>
   $.backstretch("<%= asset_path 'StartupInstitutebackground2.jpg' %>", {fade: 750, duration: 6000});
