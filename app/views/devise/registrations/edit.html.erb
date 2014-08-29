@@ -28,7 +28,7 @@
 
 
   <div><%= f.label :current_password %>
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
+    <%= f.password_field :current_password, :placeholder => "Required to save changes", autocomplete: "off" %></div>
 
   <div><%= f.label :new_password %> 
     <%= f.password_field :password, :placeholder => "Leave blank if not changing", autocomplete: "off" %></div>

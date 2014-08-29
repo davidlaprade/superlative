@@ -25,7 +25,7 @@ class TitlesController < ApplicationController
 		if @title.delete
 			redirect_to user_path(@user.id)
 		else
-			redirect_to root_path
+			redirect_to users_path
 		end
 	end
 

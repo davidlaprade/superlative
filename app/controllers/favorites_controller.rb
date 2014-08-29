@@ -32,7 +32,7 @@ class FavoritesController < ApplicationController
 		if @favorites.destroy_all
 			redirect_to user_path(params[:user_id])
 		else
-			redirect_to root_path
+			redirect_to users_path
 		end
 
 	end

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#welcome'
 
+  get '/welcome' => "welcome#welcome", as: :root
+
   # Don't want users to have access to more RESTFUL actions through URL than the show
   resources :users, only: [:show, :index] do
     # nest the titles routes in users routes; want to have user_id (different from current_user.id) in params
