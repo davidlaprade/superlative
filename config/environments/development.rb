@@ -10,7 +10,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # for Bootstrap Popover, see: http://stackoverflow.com/questions/15790567/bootstrap-popover-not-working-rails
-  config.serve_static_assets = false
+  # config.serve_static_assets = false
 
   # Do not eager load code on boot.
   config.eager_load = false

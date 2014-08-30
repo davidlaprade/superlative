@@ -5,21 +5,17 @@
   <div class="row12" style="PADDING-left: 100px; PADDING-right: 100px; PADDING-TOP: 35px">
     <% @users.order(:last_name).each do |user| %>
         <% if user.role != "guest" %>
-          <a rel="popover" data-toggle="popover" data-placement="top" data-content=<%= user.first_name %> style="PADDING-left: 35px"><img src=<%= user.photo_url(:thumb).to_s %> class="img-circle"></a>
+          <a href=<%= user_path(user) %> style="PADDING-left: 35px"><img src=<%= user.photo_url(:thumb).to_s %> class="img-circle"></a>
         
 
 
         <% end %>
         <% if current_user.present? && current_user.role == "admin" && user.role == "guest" %>
-          <a style="PADDING-left: 35px"><img src=<%= user.photo_url(:thumb).to_s %> class="img-circle"></a>
+          <a href=<%= user_path(user) %> style="PADDING-left: 35px"><img src=<%= user.photo_url(:thumb).to_s %> class="img-circle"></a>
         <% end %>
     <% end %>
   </div>
 </div>
-
-<script>  
-  $(".img-circle").popover(placement: 'top'; animation: 'true'; trigger :'hover');  
-</script>
 
 
 <script>
