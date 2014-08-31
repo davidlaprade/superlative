@@ -1,7 +1,7 @@
 <%- model_class = User -%>
 
 
-<div class="row" style="PADDING-TOP: 25px">
+<div class="row">
   <div class="row12" style="PADDING-left: 100px; PADDING-right: 100px; PADDING-TOP: 35px">
     <ul class="thumbnails">
     <% @users.order(:last_name).each do |user| %>
@@ -23,5 +23,5 @@
 
 
 <script>
-  $.backstretch("<%= asset_path 'StartupInstitutebackground2.jpg' %>", {fade: 750, duration: 6000});
+  $.backstretch("<%= asset_path 'StartupInstitutebackground4.jpg' %>", {fade: 750, duration: 6000});
 </script>
