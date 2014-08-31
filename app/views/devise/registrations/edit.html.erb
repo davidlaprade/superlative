@@ -1,53 +1,6 @@
 <div class="container">
 <h2>Edit Your Profile</h2>
 
-<form class="form-horizontal">
-  <div class="control-group">
-    <label class="control-label" for="user_first_name">First</label>
-    <div class="controls">
-      <input autofocus="autofocus" type="text" id="user_first_name" name="user[first_name]" value=<%=current_user.first_name%>>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="user_last_name">Last</label>
-    <div class="controls">
-      <input autofocus="autofocus" type="text" id="user_last_name" name="user[last_name]" value=<%=current_user.last_name%>>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="user_email">Email</label>
-    <div class="controls">
-      <input autofocus="autofocus" type="email" id="user_email" name="user[email]" value=<%=current_user.email%>>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="user_track">Track</label>
-    <div class="controls">
-      <select id="user_track" name="user[track]">
-        <option value="Sales">Sales</option>
-        <option value="Technical Marketing">Technical Marketing</option>
-        <option value="Product and Design">Product and Design</option>
-        <option value="Web Development">Web Development</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <label class="control-label" for="inputPassword">Password</label>
-    <div class="controls">
-      <input type="password" id="inputPassword" placeholder="Password">
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox">
-        <input type="checkbox"> Remember me
-      </label>
-      <button type="submit" class="btn">Sign in</button>
-    </div>
-  </div>
-</form>
-
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>

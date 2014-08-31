@@ -3,17 +3,16 @@
 
 <div class="row" style="PADDING-TOP: 25px">
   <div class="row12" style="PADDING-left: 100px; PADDING-right: 100px; PADDING-TOP: 35px">
+    <ul class="thumbnails">
     <% @users.order(:last_name).each do |user| %>
-        <% if user.role != "guest" %>
-          <a href=<%= user_path(user) %> style="PADDING-left: 35px"><img src=<%= user.photo_url(:thumb).to_s %> class="img-circle"></a>
-        
+      <li class="span2">
+        <a href=<%= user_path(user) %> class="thumbnail">
+          <img src=<%= user.photo_url(:thumb).to_s %> alt="">
 
-
-        <% end %>
-        <% if current_user.present? && current_user.role == "admin" && user.role == "guest" %>
-          <a href=<%= user_path(user) %> style="PADDING-left: 35px"><img src=<%= user.photo_url(:thumb).to_s %> class="img-circle"></a>
-        <% end %>
+        </a>
+      </li>
     <% end %>
+    </ul>
   </div>
 </div>
 
