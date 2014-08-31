@@ -63,7 +63,7 @@ validates_inclusion_of :role, :in => ROLES,
       end
       return top_superlatives
     else
-      return ["No_superlatives_suggested_yet!"]
+      return ["No superlatives suggested yet!"]
     end
   end
 
