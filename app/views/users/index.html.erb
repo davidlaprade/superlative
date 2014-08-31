@@ -7,9 +7,20 @@
     <% @users.order(:last_name).each do |user| %>
       <li class="span2">
         <a href=<%= user_path(user) %> class="thumbnail">
-          <img src=<%= user.photo_url(:thumb).to_s %> alt="">
-
+          <img src=<%= user.photo_url(:thumb).to_s %>>
         </a>
+        <div class="caption">
+         <h4><%= "#{user.first_name} #{user.last_name}" %></h4>
+         <p>Some sample text. Some sample text.</p>
+         <p>
+            <a href="#" class="btn btn-primary" role="button">
+               Button
+            </a> 
+            <a href="#" class="btn btn-default" role="button">
+               Button
+            </a>
+         </p>
+        </div>
       </li>
     <% end %>
     </ul>
