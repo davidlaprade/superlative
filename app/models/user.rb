@@ -48,6 +48,15 @@ validates_inclusion_of :role, :in => ROLES,
     return result_array
   end
 
+  # called on user object; returns number of max votes on user's top-voted superlative
+  def max_votes
+    if self.ranked_superlatives.present?
+      return self.ranked_superlatives[0][0]
+    else
+      return 0
+    end
+  end
+
   # call on user object, returns an array of superlative contents that are tied for the most votes
   def top_superlatives
     if !self.ranked_superlatives.empty?

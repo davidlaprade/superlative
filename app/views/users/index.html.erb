@@ -6,14 +6,12 @@
     <ul class="thumbnails">
     <% @users.order(:last_name).each do |user| %>
       <li class="span2">
-        <div class="thumbnail"style="background-color: white" >
+        <div class="thumbnail" style="background-color: white" >
           <img src=<%= user.photo_url(:thumb).to_s %>>
           <h4><%= "#{user.first_name} #{user.last_name}" %></h4>
           <p><i><%= user.top_superlatives[0] %></i></p>
-          <p>
-            <a href=<%= user_path(user) %> class="btn btn-success" role="button">Vote!</a> 
-            <a href="#" class="btn btn-default" role="button">Button</a>
-          </p>
+          <p><span class="badge badge-info"><%= user.max_votes %>  Votes</span>  <a href=<%= user_path(user) %> class="btn btn-success" role="button">Vote!</a></p>
+          <p></p>
         </div>
       </li>
     <% end %>
