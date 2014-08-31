@@ -11,8 +11,6 @@ validates_inclusion_of :role, :in => ROLES,
           :message => "{{value}} must be in #{ROLES.join ','}"
 
 
-
-
   mount_uploader :photo, PhotoUploader
 
   validates :first_name, presence: true
