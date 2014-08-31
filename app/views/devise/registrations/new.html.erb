@@ -29,12 +29,12 @@
 
   <p></p>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div>
+    <%= f.submit "Sign up", :class => "btn btn-primary" %> 
+    <a href=<%= users_path %> class="btn" role="button"><i class="icon-home"></i> Home</a>
+    <a href=<%= new_user_session_path %> class="btn" role="button"><i class="icon-user"></i> Sign in</a>
+  </div>
+
 <% end %>
 
-<p></p>
-<%= link_to "Home", users_path %>
-<p></p>
-
-<%= render "devise/shared/links" %>
 </div>
