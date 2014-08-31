@@ -7,6 +7,12 @@
     <% @users.order(:last_name).each do |user| %>
       <% if user.role != "guest" || current_user.present? && current_user.role == "admin" %>
         <li class="span2">
+        <a href=<%= user_path(user) %> class="thumbnail">
+          <img src=<%= user.photo_url(:thumb).to_s %> alt="">
+        </a>
+      </li>
+
+        <li class="span2 hidden">
           <div class="thumbnail" style="background-color: white" >
             <img src=<%= user.photo_url(:thumb).to_s %>>
             <h4><%= "#{user.first_name} #{user.last_name}" %></h4>
@@ -23,5 +29,11 @@
 
 
 <script>
+$('.span2 p').hover(function(evt) {
+    $('.span2 hidden').removeClass('hidden');
+}, function (evt){
+    $('.span2').addClass('hidden');
+})
+
   $.backstretch("<%= asset_path 'StartupInstitutebackground4.jpg' %>", {fade: 750, duration: 6000});
 </script>
