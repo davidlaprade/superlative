@@ -6,13 +6,13 @@
     <ul class="thumbnails">
     <% @users.order(:last_name).each do |user| %>
       <% if user.role != "guest" || current_user.present? && current_user.role == "admin" %>
-        <li class="span2-thumb">
+      
+      <li class="span2-thumb">
         <a href=<%= user_path(user) %> class="thumbnail">
-          <img src=<%= user.photo_url(:thumb).to_s %> alt="">
+          <img src=<%= user.photo_url(:thumb).to_s %>>
         </a>
-      </li>
 
-        <li class="span2-info hidden">
+        <div class="span2-info hidden">
           <div class="thumbnail" style="background-color: white" >
             <img src=<%= user.photo_url(:thumb).to_s %>>
             <h4><%= "#{user.first_name} #{user.last_name}" %></h4>
@@ -20,28 +20,22 @@
             <p><span class="badge badge-info"><%= user.max_votes %>  Votes</span>  <a href=<%= user_path(user) %> class="btn btn-success" role="button">Vote!</a></p>
             <p></p>
           </div>
-        </li>
+        </div>
+      </li>
+
       <% end %>
     <% end %>
     </ul>
   </div>
 </div>
 
+
 <script>
-$('.span2-thumb').on({
-    mouseenter: function(evt) {
-        $('.span2-thumb').addClass('hidden');
-        $('.span2-info').removeClass('hidden');
-    }
+$(function() {
+    $('.span2-thumb').on('mouseenter mouseleave', function() {
+        $(this).children().toggleClass('hidden');
+    });
 });
-
-$('.span2-info').on({
-    mouseleave: function() {
-        $('.span2-info').addClass('hidden');
-        $('.span2-thumb').removeClass('hidden');
-    }
-});
-
 
   $.backstretch("<%= asset_path 'StartupInstitutebackground4.jpg' %>", {fade: 750, duration: 6000});
 </script>
