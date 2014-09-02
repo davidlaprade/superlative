@@ -1,18 +1,19 @@
 <%- model_class = User -%>
 
+<!-- http://stackoverflow.com/questions/2941189/how-to-overlay-one-div-over-another-div -->
 
 <div class="row">
-  <div class="row12" style="PADDING-left: 100px; PADDING-right: 100px; PADDING-TOP: 35px">
+  <div class="row12" style="padding-left: 100px; padding-right: 100px; padding-top: 35px">
     <ul class="thumbnails">
     <% @users.order(:last_name).each do |user| %>
       <% if user.role != "guest" || current_user.present? && current_user.role == "admin" %>
-      
-      <li class="span2-thumb">
+        <li class=<%="span2-thumb"%> id=<%= user.id %> >
         <a href=<%= user_path(user) %> class="thumbnail">
           <img src=<%= user.photo_url(:thumb).to_s %>>
         </a>
+      </li>
 
-        <div class="span2-info hidden">
+        <li class="span2-info hidden" id="info-<%= user.id %>">
           <div class="thumbnail" style="background-color: white" >
             <img src=<%= user.photo_url(:thumb).to_s %>>
             <h4><%= "#{user.first_name} #{user.last_name}" %></h4>
@@ -20,8 +21,7 @@
             <p><span class="badge badge-info"><%= user.max_votes %>  Votes</span>  <a href=<%= user_path(user) %> class="btn btn-success" role="button">Vote!</a></p>
             <p></p>
           </div>
-        </div>
-      </li>
+        </li>
 
       <% end %>
     <% end %>
@@ -31,11 +31,19 @@
 
 
 <script>
-$(function() {
-    $('.span2-thumb').on('mouseenter mouseleave', function() {
-        $(this).children().toggleClass('hidden');
-    });
-});
+  $(".span2-thumb").mouseenter( function(){
+    // Get the ID of the div you just entered and use it to access the corresponding info div
+    var info_id = "#info-" + $(this).attr('id');
+    $(this).hide();
+    $( info_id ).show();
+  });
+
+  $(".span2-info").mouseleave( function(){
+    // Strip out the 'info-' part of this div's ID
+    var thumb_id = $(this).attr('id').replace('info-','');
+    $(this).hide();
+    $(thumb_id).show();
+  });
 
   $.backstretch("<%= asset_path 'StartupInstitutebackground4.jpg' %>", {fade: 750, duration: 6000});
 </script>
