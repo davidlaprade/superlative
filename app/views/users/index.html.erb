@@ -9,14 +9,14 @@
     <% @users.order(:last_name).each do |user| %>
       <% if user.role != "guest" || current_user.present? && current_user.role == "admin" %>
       
-      <div class="span2" style="display: inline-block">
-        <div class="span2-thumb">
-        <img src=<%= user.photo_url(:thumb).to_s %> style="margin: 10px; border: 2px white solid">
+      <div class="span2" style="margin: 0px">
+        <div class="span2-thumb" style="margin: 0px">
+        <img src=<%= user.photo_url(:thumb).to_s %> width="150px" sonerror="imgError(this);" style="background-color: white; margin: 10px; border: 2px white solid" />
 
 
           <div class="span2-info hidden" style="position: relative; margin-left: -10px">
             <div class="thumbnail" style="background-color: white; width: 300px; z-index:1; position: absolute" >
-              <img src=<%= user.photo_url(:thumb).to_s %> align="left" style="padding-right: 10px">
+              <img src=<%= user.photo_url(:thumb).to_s %> align="left" width="150px" style="background-color: grey; margin-right: 10px" />
               <h4><%= "#{user.first_name} #{user.last_name}" %></h4>
               <p><i><%= user.top_superlatives[0] %></i></p>
               <p><span class="badge badge-info"><%= user.max_votes %>  Votes</span>  <a href=<%= user_path(user) %> class="btn btn-success" role="button">Vote!</a></p>
@@ -35,11 +35,19 @@
 
 
 <script>
-$(function() {
-    $('.span2-thumb').on('mouseenter mouseleave', function() {
-        $(this).children().toggleClass('hidden');
-    });
-});
+  $(function() {
+      $('.span2-thumb').on('mouseenter mouseleave', function() {
+          $(this).children().toggleClass('hidden');
+      });
+  });
+
+// trying to fix broken images
+// http://stackoverflow.com/questions/92720/jquery-javascript-to-replace-broken-images
+  function imgError(image) {
+    image.onerror = "";
+    image.src = "http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/256/User-blue-icon.png";
+    return true;
+  }
 
   $.backstretch("https://s3.amazonaws.com/sib-superlative-app-bucket/StartupInstitutebackground4.jpg", {fade: 750, duration: 6000});
 </script>
