@@ -18,13 +18,14 @@
         <img src=<%= user.photo_url(:thumb).to_s %> width="150px" onerror="imgError(this);" style="background-color: white; margin: 10px; border: 2px white solid" />
         </div>
 
-        <div class="span2-info hidden" style="position: relative; margin-left: -170px; margin-top: 10px">
-          <div class="thumbnail" style="background-color: white; width: 300px; z-index:1; position: absolute" >
-            <img src=<%= user.photo_url(:thumb).to_s %> align="left" width="150px" style="background-color: grey; margin-right: 10px" />
+        <div class="span2-info hidden" style="position: relative; margin-left: -200px; margin-top: 10px">
+          <div class="thumbnail" style="background-color: white; width: 320px; z-index:1; position: absolute" >
+            <img src=<%= user.photo_url(:thumb).to_s %> onerror="imgError(this);" align="left" width="150px" style="background-color: grey; margin-right: 10px; display: inline-block" />
+            <div style="display: inline-block; width: 150px; margin: 0px">
             <h4><%= "#{user.first_name} #{user.last_name}" %></h4>
             <p><i><%= user.top_superlatives[0] %></i></p>
             <p><span class="badge badge-info"><%= user.max_votes %>  Votes</span>  <a href=<%= user_path(user) %> class="btn btn-success" role="button">Vote!</a></p>
-            <p></p>
+            </div>
           </div>
         </div>
 
@@ -49,7 +50,7 @@
 // http://stackoverflow.com/questions/92720/jquery-javascript-to-replace-broken-images
   function imgError(image) {
     image.onerror = "";
-    image.src = "https://cdn3.iconfinder.com/data/icons/users/100/user_male_1-512.png";
+    image.src = "http://static.tumblr.com/ijdznxs/Z24m9mk06/bssarrowblue.png";
     image.style = "background-color: white; margin: 10px; border: 2px grey solid"
     return true;
   }
