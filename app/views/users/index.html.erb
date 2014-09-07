@@ -10,12 +10,12 @@
       <% if user.role != "guest" || current_user.present? && current_user.role == "admin" %>
       
       <div class="span2" style="margin: 0px">
-        <div class="span2-thumb" style="margin: 0px">
-        <img src=<%= user.photo_url(:thumb).to_s %> width="150px" onerror="imgError(this);" style="background-color: white; margin: 10px; border: 2px white solid" />
+        <div class="span2" style="margin: 0px">
+        <img src=<%= user.photo_url(:thumb).to_s %> width="150px" height="150px" onerror="imgError(this);" style="background-color: white; margin: 10px; border: 2px white solid" />
         </div>
 
-        <div class="span2-thumb hidden" style="margin: 0px; position: relative; z-index: 0">
-        <img src=<%= user.photo_url(:thumb).to_s %> width="150px" onerror="imgError(this);" style="background-color: white; margin: 10px; border: 2px white solid" />
+        <div class="span2 hidden" style="margin: 0px; position: relative; z-index: 0">
+        <img src=<%= user.photo_url(:thumb).to_s %> width="150px" height="150px' onerror="imgError(this);" style="background-color: white; margin: 10px; border: 2px white solid" />
         </div>
 
         <div class="span2-info hidden" style="position: relative; margin-left: -200px; margin-top: 10px">
@@ -40,6 +40,7 @@
 
 
 <script>
+// this creates the popup animation
   $(function() {
       $('.span2').on('mouseenter mouseleave', function() {
           $(this).children().toggleClass('hidden');
