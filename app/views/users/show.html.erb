@@ -1,7 +1,7 @@
 <%- model_class = User -%>
 <div class="row">
   <div class="span2.5">
-    <img src=<%= @user.photo_url(:masthead).to_s %> class="img-circle">
+    <img src=<%= @user.photo_url(:masthead).to_s %> onerror="imgError(this);" class="img-circle">
   </div>
   <div class="span9.5">
     <h2><%= "#{@user.first_name}'s Superlatives" %></h2>
@@ -77,3 +77,14 @@
     </div>
   </div>
 </div>
+
+<script>
+// trying to fix broken images
+// http://stackoverflow.com/questions/92720/jquery-javascript-to-replace-broken-images
+  function imgError(image) {
+    image.onerror = "";
+    image.src = "http://static.tumblr.com/ijdznxs/Z24m9mk06/bssarrowblue.png";
+    image.style = "background-color: white; margin: 10px; border: 2px grey solid"
+    return true;
+  }
+</script>
