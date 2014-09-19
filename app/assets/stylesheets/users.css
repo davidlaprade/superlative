@@ -1,5 +1,5 @@
 
-index_body {
+#index_body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -9,28 +9,32 @@ index_body {
 #panel {
     display: inline-block; 
     width: 90%;
+    margin: auto;
+    height: 1000px;
     /* don't specify height, you want it to adjust automatically depending on the number of thumbnails */
     border: 2px solid yellow;
-    text-align: left;  
+    text-align: center;
 }
 
 .user_container {
     margin: 15px;
-    display: inline-block; 
-    border: 2px solid blue;
+    border-radius: 5px;
     width: 170px;
     height: 170px;
+    border: 2px solid blue;
+    z-index: 1;
+    display: inline-block;
+
 }
 
 .photo_thumbnail {
     margin: 0;
     z-index: 1;
     position: absolute;
-    border-radius: 10px;
-    background-color: white;
+    border-radius: 5px;
     border: 2px gray solid;
-    width: 150px; 
-    height: 150px;
+    width: 170px; 
+    height: 170px;
  }
 
 .photo_infobox {
@@ -45,11 +49,6 @@ index_body {
     margin-top: -5px;
     margin-left: -50px;
     display: none;
-}
-
-.toggle {
-    width: 50px;
-    height: 50px;
 }
 
 .popup_photo {

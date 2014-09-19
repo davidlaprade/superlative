@@ -6,9 +6,8 @@
       <% @users.order(:last_name).each do |user| %>
         <% if user.role != "guest" || current_user.present? && current_user.role == "admin" %>
           <div class="user_container">
-                  <div class="photo_thumbnail">
-                    <img class="toggle" src=<%= user.photo_url(:thumb).to_s %> onerror="imgError(this);"/>
-                  </div>
+
+                  <img class="photo_thumbnail" src=<%= user.photo_url(:thumb).to_s %> onerror="imgError(this);"/>
 
                   <div class="photo_infobox">
                         <img class="popup_photo" src=<%= user.photo_url(:thumb).to_s %> onerror="imgError(this);"/>
