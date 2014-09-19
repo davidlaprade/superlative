@@ -17,7 +17,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process :resize_to_limit => [150, 150]
+    process :resize_to_limit => [170, 170]
   end
 
   version :small do
@@ -36,17 +36,17 @@ class PhotoUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [300, 300]
   end
 
-  version :masthead do
-    process :resize_to_limit => [400, 400]
-  end
+  # version :masthead do
+  #   process :resize_to_limit => [400, 400]
+  # end
 
-  version :large do
-        process :resize_to_limit => [700, 700]
-  end
+  # version :large do
+  #       process :resize_to_limit => [700, 700]
+  # end
 
-  version :extra_large do
-    process :resize_to_limit => [1000, 1000]
-  end
+  # version :extra_large do
+  #   process :resize_to_limit => [1000, 1000]
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
