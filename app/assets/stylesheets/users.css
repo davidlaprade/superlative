@@ -13,6 +13,7 @@
 }
 
 .user_container {
+    background-color: gray;
     position: relative;
     margin: 15px;
     border-radius: 5px;
@@ -30,12 +31,14 @@
     width: 170px;
     height: 170px;
     overflow: hidden;
+    text-align: center;
 }
 
 .photo_thumbnail {
     z-index: 1;
     margin: 0;
-    width: 100%; 
+    width: 170px; 
+
 }
 
 .photo_infobox {
