@@ -13,24 +13,30 @@
 }
 
 .user_container {
+    position: relative;
     margin: 15px;
     border-radius: 5px;
+    border: 2px gray solid;
     width: 170px;
     height: 170px;
-    z-index: 1;
     display: inline-block;
 
 }
 
-.photo_thumbnail {
-    margin: 0;
-    z-index: 1;
+.crop_thumb {
     position: absolute;
+    z-index: 1;
     border-radius: 5px;
-    border: 2px gray solid;
-    width: 170px; 
+    width: 170px;
     height: 170px;
- }
+    overflow: hidden;
+}
+
+.photo_thumbnail {
+    z-index: 1;
+    margin: 0;
+    width: 100%; 
+}
 
 .photo_infobox {
     border-radius: 5px;
@@ -46,13 +52,19 @@
     display: none;
 }
 
-.popup_photo {
+.crop_popup {
     vertical-align: top;
     display: inline-block;
     background-color: gray;
     margin: 5px;
     width: 150px;
+    max-height: 170px;
     border-radius: 5px;
+    overflow: hidden;
+}
+
+.popup_photo {
+    width: 100%;
 }
 
 .popup_content {
