@@ -60,10 +60,20 @@
               <li><%= link_to "Sign up", new_user_registration_path, :method => 'GET'  %></li>
               <% end %>
             </ul>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "navbar-form navbar-right"}) do |f| %>
+                <div class="form-group">
+                  <%= f.email_field :email, autofocus: true, placeholder: "Email", :html => {:class => "form-control"} %>
+                  <%= f.password_field :password, autocomplete: "off", placeholder: "Password", :html => {:class => "form-control"} %>
+                  <%= f.submit "Sign in", :class => "btn btn-primary" %>
+                </div>
+                   
+            <% end %>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
+
+
 
 
         <div class="span12">

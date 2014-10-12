@@ -32,13 +32,22 @@
 
 <script>
 // this creates the popup animation
-  $(".user_container").mouseenter( function(){
-    $(this).find(".photo_infobox").show();
-  });
+  $(".user_container").hover(
+    function(){
+      $(this).find(".photo_infobox").show();
+    },
+    function(){
+      $(this).find(".photo_infobox").hide();
+    }
+  );
 
-  $(".user_container").mouseleave( function(){
-    $(this).find(".photo_infobox").hide();
-  });
+  if ($(".photo_thumbnail").width() > $(".photo_thumbnail").height()){
+    $(".photo_thumbnail").css("height","100%");
+  }
+  else {
+    $(".photo_thumbnail").css("width","400%");
+  };
+
 
 // trying to fix broken images
 // http://stackoverflow.com/questions/92720/jquery-javascript-to-replace-broken-images
