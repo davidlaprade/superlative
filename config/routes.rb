@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index] do
     # nest the titles routes in users routes; want to have user_id (different from current_user.id) in params
     resources :titles do
-      # next the favorites routes in titles routes; again, to access title_id from the params
+      # nest the favorites routes in titles routes; again, to access title_id from the params
       member do
         post 'favorite', :to => 'favorites#favorite'
         post 'unfavorite', :to => 'favorites#unfavorite'
